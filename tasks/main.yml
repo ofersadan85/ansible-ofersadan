@@ -27,40 +27,40 @@
 - name: Git checkout powerlevel10k
   ansible.builtin.git:
     repo: 'https://github.com/romkatv/powerlevel10k'
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/themes/powerlevel10k"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.oh-my-zsh/themes/powerlevel10k"
     depth: 1
     update: yes
 
 - name: Git checkout zsh-autosuggestions
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions'
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/plugins/zsh-autosuggestions"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.oh-my-zsh/plugins/zsh-autosuggestions"
     depth: 1
     update: yes
 
 - name: Git checkout zsh-completions
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-completions'
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/plugins/zsh-completions"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.oh-my-zsh/plugins/zsh-completions"
     depth: 1
     update: yes
 
 - name: Git checkout zsh-syntax-highlighting
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-syntax-highlighting'
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/plugins/zsh-syntax-highlighting"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.oh-my-zsh/plugins/zsh-syntax-highlighting"
     depth: 1
     update: yes
 
 - name: Change user shell to zsh 
   become: true
-  ansible.builtin.shell: "chsh -s $(which zsh) {{ ansible_env.USER }}"
+  ansible.builtin.shell: "chsh -s $(which zsh) {{ lookup('ansible.builtin.env', 'USER') }}"
   changed_when: false
 
 - name: Copy dotfiles
   ansible.builtin.copy:
     src: "{{ item }}"
-    dest: "{{ ansible_env.HOME }}/{{ item }}"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/{{ item }}"
     mode: 0660
   with_items:
     - .gitconfig
