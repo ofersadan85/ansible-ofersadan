@@ -1,0 +1,14 @@
+set atblanks
+set autoindent
+set historylog
+set positionlog
+set softwrap
+set suspend
+set titlecolor brightwhite,blue
+set statuscolor brightwhite,green
+set errorcolor brightwhite,red
+set selectedcolor brightwhite,magenta
+set stripecolor ,yellow
+set numbercolor magenta
+set keycolor cyan
+set functioncolor green
