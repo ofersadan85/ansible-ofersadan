@@ -27,6 +27,7 @@ plugins=(
   sudo
   systemadmin
   systemd
+  web-search
   zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting
