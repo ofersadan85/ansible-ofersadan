@@ -43,3 +43,4 @@ if [[ -d $HOME/.local/bin ]]; then
 fi
 
 alias aptdate="sudo apt update && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean"
+alias pacdate="sudo pacman -Syu"
