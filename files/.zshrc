@@ -47,3 +47,4 @@ fi
 
 alias aptdate="sudo apt update && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean"
 alias pacdate="sudo pacman -Syu"
+alias sshconfig='echo "Host $(curl -fs ifconfig.me)\n  HostName $(curl -fs ifconfig.me)\n  User ${USER}\n  $(cat /etc/ssh/sshd_config.d/port-change.conf)\n  IdentityFile ~/.ssh/your_key"'
