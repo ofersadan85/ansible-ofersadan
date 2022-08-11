@@ -1,14 +1,4 @@
 ---
-- name: Install minimal required packages
-  become: true
-  ansible.builtin.apt:
-    update_cache: true
-    pkg:
-      - git
-      - gpg
-      - nano
-      - rclone
-      - zsh
 
 - name: Download oh-my-zsh latest installer
   ansible.builtin.get_url:
@@ -51,11 +41,6 @@
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.oh-my-zsh/plugins/zsh-syntax-highlighting"
     depth: 1
     update: yes
-
-- name: Change user shell to zsh 
-  become: true
-  ansible.builtin.shell: "chsh -s $(which zsh) {{ lookup('ansible.builtin.env', 'USER') }}"
-  changed_when: false
 
 - name: Copy dotfiles
   ansible.builtin.copy:
