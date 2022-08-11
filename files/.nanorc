@@ -3,7 +3,6 @@ set autoindent
 set historylog
 set positionlog
 set softwrap
-set suspend
 set titlecolor brightwhite,blue
 set statuscolor brightwhite,green
 set errorcolor brightwhite,red
