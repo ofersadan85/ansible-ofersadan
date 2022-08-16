@@ -60,4 +60,4 @@
     key: "{{ item }}"
   loop:
     - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDJurC7e+GVWWDidK87tqG1Upzffl9e46d+EmCbzie0O ofers@noisemaker"
-    - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL5sy/bo2hY7amS8t4Jr5gu9QXO8vNmK+cu7szmDxMFk ofer@JuiceSSH"
+    - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIvc+pot8HjAceN0zdH8Knp/T8XEau1LARf+1aoIrEbW ofer@JuiceSSH"
