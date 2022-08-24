@@ -1,13 +1,18 @@
 set atblanks
 set autoindent
 set historylog
+set indicator
+set linenumbers
 set positionlog
+set smarthome
 set softwrap
+
 set titlecolor brightwhite,blue
 set statuscolor brightwhite,green
 set errorcolor brightwhite,red
 set selectedcolor brightwhite,magenta
-set stripecolor ,yellow
 set numbercolor magenta
 set keycolor cyan
-set functioncolor green
+set functioncolor italic,green
+
+bind ^/ comment all
