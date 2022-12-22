@@ -20,13 +20,17 @@ plugins=(
   extract
   gcloud
   genpass
+  gh
   git
   git-auto-fetch
   gitignore
   history
   jsontools
+  kubectl
   magic-enter
+  minikube
   pip
+  rust
   sudo
   systemadmin
   systemd
