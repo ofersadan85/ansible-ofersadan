@@ -4,6 +4,8 @@
         "https://json.schemastore.org/dependabot-2.0.json": "./.github/dependabot.yml"
     },
     "cSpell.words": [
+        "nanorc",
+        "powerlevel",
         "robertdebock"
     ]
 }
