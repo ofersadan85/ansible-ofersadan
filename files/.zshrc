@@ -16,7 +16,6 @@ plugins=(
   command-not-found
   docker
   docker-compose
-  dotenv
   extract
   gcloud
   genpass
