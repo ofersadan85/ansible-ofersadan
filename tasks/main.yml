@@ -47,7 +47,26 @@
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/{{ item }}"
     mode: 0660
   with_items:
+    - .aliases
     - .gitconfig
     - .nanorc
     - .p10k.zsh
     - .zshrc
+
+- name: Create ~/.local
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.local"
+    state: directory
+
+- name: Create ~/.local/bin
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.local/bin"
+    state: directory
+
+- name: Copy scripts
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.local/bin/{{ item }}"
+    mode: 0660
+  with_items:
+    - telegram.sh
