@@ -1,0 +1,35 @@
+# Dotfiles
+alias dotfiles='git --git-dir="${HOME}/.dotfiles" --work-tree="${HOME}"'
+
+# Updates
+alias update='
+if command -v apt &> /dev/null; then
+    sudo apt update \
+    && sudo apt dist-upgrade -y \
+    && sudo apt autoremove -y \
+    && sudo apt autoclean
+elif command -v pacman &> /dev/null; then 
+    sudo pacman -Syu
+fi'
+
+# Docker
+alias dcupdate="docker-compose pull && docker-compose up -d && docker system prune -f"
+
+# SSH Info
+alias sshconfig='
+SSH_PORT_FILE="/etc/ssh/sshd_config.d/port-change.conf"
+EXTERNAL_IP=$(curl --max-time 5 -fs ifconfig.me)
+if [ $? -eq 0 ]; then
+    echo "Host $(hostname)"
+    echo "  HostName ${EXTERNAL_IP}"
+    echo "  User ${USER}"
+    echo "  IdentityFile ~/.ssh/your_key"
+    [[ -f "${SSH_PORT_FILE}" ]] && echo "  $(cat ${SSH_PORT_FILE})"
+else
+    echo "No internet connection."
+fi
+'
+
+# Quick QR Codes
+alias qr="qrencode -t UTF8"
+alias qrssh="sshconfig | qr"

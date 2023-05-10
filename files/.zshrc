@@ -41,15 +41,9 @@ plugins=(
 
 ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/.zcompdump-$(hostname)-${ZSH_VERSION}"
 
-source $HOME/.oh-my-zsh/oh-my-zsh.sh
-source $HOME/.p10k.zsh
+source "${HOME}/.oh-my-zsh/oh-my-zsh.sh"
+source "${HOME}/.p10k.zsh"
+[[ -f "${HOME}/.aliases" ]] source "${HOME}/.aliases"
 
-if [[ -d $HOME/.local/bin ]]; then
-  export PATH=$HOME/.local/bin:$PATH
-fi
-
+[[ -d "${HOME}/.local/bin" ]] && export PATH="${HOME}/.local/bin:$PATH"
 export EDITOR=nano
-
-alias aptdate="sudo apt update && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean"
-alias pacdate="sudo pacman -Syu"
-alias sshconfig='echo "Host $(curl -fs ifconfig.me)\n  HostName $(curl -fs ifconfig.me)\n  User ${USER}\n  $(cat /etc/ssh/sshd_config.d/port-change.conf)\n  IdentityFile ~/.ssh/your_key"'
