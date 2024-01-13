@@ -43,7 +43,11 @@ ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/.zcompdump-$(hostname)-${ZSH_VERSI
 
 source "${HOME}/.oh-my-zsh/oh-my-zsh.sh"
 source "${HOME}/.p10k.zsh"
-[[ -f "${HOME}/.aliases" ]] source "${HOME}/.aliases"
-
+[[ -f "${HOME}/.aliases" ]] && source "${HOME}/.aliases"
 [[ -d "${HOME}/.local/bin" ]] && export PATH="${HOME}/.local/bin:$PATH"
+if type -p zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
 export EDITOR=nano
+export GPG_TTY=$(tty)
