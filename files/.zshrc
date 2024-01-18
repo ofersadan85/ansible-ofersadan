@@ -41,13 +41,31 @@ plugins=(
 
 ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/.zcompdump-$(hostname)-${ZSH_VERSION}"
 
+# History management
+export HISTCONTROL=ignoreboth
+export HISTSIZE=5000
+export HISTIGNORE="clear:bg:fg:cd:cd -:cd ..:exit:date:w:* --help:ls:l:ll:lll"
+
+# make "less" better
+# X = leave content on-screen
+# F = quit automatically if less than one screenfull
+# R = raw terminal characters (fixes git diff)
+#     see http://jugglingbits.wordpress.com/2010/03/24/a-better-less-playing-nice-with-git/
+export LESS="-F -X -R"
+
+# Rust
+export CARGO_TARGET_DIR="${HOME}/.cargo/target"
+export CARGO_INCREMENTAL=1
+export RUST_BACKTRACE=1
+
 source "${HOME}/.oh-my-zsh/oh-my-zsh.sh"
 source "${HOME}/.p10k.zsh"
-[[ -f "${HOME}/.aliases" ]] && source "${HOME}/.aliases"
+source "${HOME}/.aliases"
 [[ -d "${HOME}/.local/bin" ]] && export PATH="${HOME}/.local/bin:$PATH"
 if type -p zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
+export TZ="Asia/Jerusalem"
 export EDITOR=nano
 export GPG_TTY=$(tty)

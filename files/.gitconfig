@@ -1,4 +1,5 @@
 [pull]
+    ff = only
 	rebase = false
 [format]
 	signoff = true
@@ -10,3 +11,5 @@
     signingkey = 07423CA9CEFC994BF6CE6228EB17D09557E27916
     name = Ofer Sadan
 	email = ofersadan85@gmail.com
+[help]
+	autocorrect = "immediate"
