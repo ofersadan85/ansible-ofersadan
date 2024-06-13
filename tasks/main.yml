@@ -70,3 +70,28 @@
     mode: 0770
   with_items:
     - telegram.sh
+
+- name: Create ~/.config
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
+    state: directory
+
+- name: Create additional ~/.config directories
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/{{ item }}"
+    state: directory
+  with_items:
+    - lsd
+    - tealdeer
+
+- name: Copy lsd config
+  ansible.builtin.copy:
+    src: .config/lsd/config.yaml
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/lsd/config.yaml"
+    mode: 0660
+
+- name: Copy tealdeer config
+  ansible.builtin.copy:
+    src: .config/tealdeer/config.toml
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/tealdeer/config.toml"
+    mode: 0660
