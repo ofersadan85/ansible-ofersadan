@@ -5,6 +5,7 @@
     dest: /tmp/omz_install.sh
     mode: 0770
   register: omz_installer
+  changed_when: false
 
 - name: Install oh-my-zsh
   ansible.builtin.shell: "{{ omz_installer.dest }} --unattended --keep-zshrc"
