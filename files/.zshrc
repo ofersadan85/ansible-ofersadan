@@ -1,3 +1,23 @@
+# Function to attach to the last tmux session or create a new one
+tmux_auto_start() {
+  if command -v tmux &> /dev/null; then
+    if [ -z "$TMUX" ]; then
+      if tmux ls 2>/dev/null | grep -q '^'; then
+        # Attach to the last session if it exists
+        tmux attach-session -t "$(tmux ls | grep -o '^[^:]*' | tail -n1)"
+      else
+        # Create a new session if no sessions exist
+        tmux new-session -s default
+      fi
+    fi
+  fi
+}
+
+# Call the function when an interactive shell is started
+case "$-" in
+  *i*) tmux_auto_start ;;
+esac
+
 # Display neofetch if possible but fail silently if not
 neofetch 2> /dev/null || true
 
@@ -57,6 +77,9 @@ export LESS="-F -X -R"
 export CARGO_TARGET_DIR="${HOME}/.cargo/target"
 export CARGO_INCREMENTAL=1
 export RUST_BACKTRACE=1
+
+# Python
+PYTHONPYCACHEPREFIX="${HOME}/.cache/pycache"
 
 source "${HOME}/.oh-my-zsh/oh-my-zsh.sh"
 source "${HOME}/.p10k.zsh"

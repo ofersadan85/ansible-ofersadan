@@ -3,7 +3,7 @@ galaxy_info:
   description: This role will set up my personal user environment on servers (meant for internal use only)
   license: MIT
   role_name: ofersadan
-  min_ansible_version: 2.9
+  min_ansible_version: "2.9"
   platforms:
   - name: Debian
     versions:

@@ -51,6 +51,7 @@
     - .gitconfig
     - .nanorc
     - .p10k.zsh
+    - .tmux.conf
     - .zshrc
 
 - name: Create ~/.local
