@@ -13,11 +13,6 @@ tmux_auto_start() {
   fi
 }
 
-# Call the function when an interactive shell is started
-case "$-" in
-  *i*) tmux_auto_start ;;
-esac
-
 # Display neofetch if possible but fail silently if not
 neofetch 2> /dev/null || true
 
